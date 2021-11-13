@@ -1,12 +1,14 @@
 <ion-content [fullscreen]="true">
   <app-header></app-header>
   <div class="content">
-    Lorem ipsum dolor sit amet, consectetur adipisdcing elit. Maecenas sagittis
-    sit amet augue et stempus. Praesent ullamcorper lobortis lacus sit amet
-    viverra. Vestibulum nec felis faucibus, rutrum dui a, finibus dolor. Aenean
-    pulvinar elit ut accumsan mattis. Donec orci ligula, pulvinar id lobortis a,
-    hendrerit vel ipsum. Pshasellus fermentum velit lectus, id cursus purus
-    eleifend sit amet. Nunc lobortis purus vitae malesuada laoreet. Mauris leo
-    ipsum, sagittis vistae condimentum at, aliquet quis orci.
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <app-postcard></app-postcard>
+    <app-postcard></app-postcard>
+    <app-postcard></app-postcard>
+    <app-postcard></app-postcard>
+    <app-postcard></app-postcard>
+    <app-postcard></app-postcard>
   </div>
 </ion-content>
