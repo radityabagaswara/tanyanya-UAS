@@ -1,0 +1,38 @@
+ion-avatar {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.logo {
+  width: 28px;
+  height: auto;
+}
+
+ion-toolbar {
+  padding: 0 10px;
+}
+
+.left-user {
+  ion-avatar {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+  }
+  padding: 10px;
+  h3,
+  p {
+    margin: 5px 0;
+  }
+}
+ion-footer {
+  padding-bottom: 3.5rem;
+}
+
+ion-list {
+  background: transparent !important;
+
+  ion-item {
+    --ion-background-color: #e9ebee !important;
+  }
+}

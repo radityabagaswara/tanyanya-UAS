@@ -1,0 +1,7 @@
+{
+  "name": "Tanyanya.id",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

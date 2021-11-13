@@ -1,0 +1,58 @@
+<ion-menu side="start" content-id="main-content">
+  <ion-content>
+    <div class="left-user">
+      <ion-row class="ion-align-items-center">
+        <ion-col size="3">
+          <ion-avatar>
+            <img src="https://ui-avatars.com/api/?size=128" />
+          </ion-avatar>
+        </ion-col>
+        <ion-col size="9">
+          <h3>Ryan Carlo</h3>
+          <p>@ryansantoso</p>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <ion-list>
+      <ion-item>
+        <ion-icon name="person-outline" slot="start"></ion-icon>
+        <ion-label>Profile</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-footer class="bar-stable" ng-click="logout()">
+    <ion-item class="logout">
+      <ion-icon name="log-out-outline" slot="start" color="danger"></ion-icon
+      >Logout
+    </ion-item>
+  </ion-footer>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="2">
+          <ion-avatar>
+            <img
+              (click)="openMenu()"
+              src="https://ui-avatars.com/api/?size=128"
+            />
+          </ion-avatar>
+        </ion-col>
+        <ion-col size="8" class="ion-text-center">
+          <img
+            class="logo"
+            src="https://ik.imagekit.io/yumepj2/tanyanyaid_logo_xm-14.png?updatedAt=1624392428366"
+          />
+        </ion-col>
+        <ion-col size="2" class="ion-text-center">
+          <ion-icon name="help-circle-outline" size="large"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-header>
+</div>
+
+<div class="header"></div>
