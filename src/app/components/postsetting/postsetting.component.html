@@ -1,26 +1,32 @@
-<ion-row>
+<ion-row class="ion-justify-content-start">
   <ion-col size="12">
     <ion-button (click)="onClick()" fill="clear" color="medium">
-      <ion-icon slot="start" name="person"></ion-icon>
-      Follow
+      <span>
+        <ion-icon slot="start" name="person"></ion-icon>
+        Follow
+      </span>
     </ion-button>
   </ion-col>
 </ion-row>
 
-<ion-row>
+<ion-row class="ion-justify-content-start">
   <ion-col size="12">
     <ion-button (click)="onClick()" fill="clear" color="medium">
-      <ion-icon slot="start" name="flag"></ion-icon>
-      Report
+      <span>
+        <ion-icon slot="start" name="flag"></ion-icon>
+        Report
+      </span>
     </ion-button>
   </ion-col>
 </ion-row>
 
-<ion-row style="margin-top: 8px">
+<ion-row style="margin-top: 8px" class="ion-justify-content-start">
   <ion-col size="12">
     <ion-button (click)="onClick()" fill="clear" color="danger">
-      <ion-icon slot="start" name="close"></ion-icon>
-      Block
+      <span>
+        <ion-icon slot="start" name="close"></ion-icon>
+        Block
+      </span>
     </ion-button>
   </ion-col>
 </ion-row>

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title mode="ios">Post</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button shape="round" fill="solid" color="primary"
+        ><p style="padding: 0 10px">Post</p></ion-button
+      >
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-avatar slot="start" class="avatar">
+      <img src="https://ui-avatars.com/api/?size=128" />
+    </ion-avatar>
+    <ion-textarea
+      placeholder="How are you today?"
+      type="text"
+      autoGrow="true"
+    ></ion-textarea>
+  </ion-item>
+</ion-content>
