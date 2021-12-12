@@ -1,0 +1,41 @@
+<ion-content>
+  <ion-title class="ion-text-center ion-margin">
+    <ion-img
+      class="logo"
+      src="https://ik.imagekit.io/yumepj2/tanyanyaid_logo_xm-14.png?updatedAt=1624392428366"
+    ></ion-img>
+    <h1>Tanyanya</h1>
+  </ion-title>
+  <ion-item class="ion-margin">
+    <ion-label position="floating">Username</ion-label>
+    <ion-input
+      type="text"
+      name="name"
+      [(ngModel)]="username"
+      required
+    ></ion-input>
+  </ion-item>
+  <ion-item class="ion-margin">
+    <ion-label position="floating">Password</ion-label>
+    <ion-input
+      type="password"
+      name="password"
+      [(ngModel)]="password"
+      required
+    ></ion-input>
+  </ion-item>
+  <ion-button class="ion-margin" type="submit" expand="block" (click)="login()"
+    >Login</ion-button
+  >
+
+  <ion-router-link>
+    <ion-button
+      class="ion-margin"
+      expand="block"
+      color=""
+      routerLink="/register"
+    >
+      Register
+    </ion-button>
+  </ion-router-link>
+</ion-content>

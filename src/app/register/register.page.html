@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title slot="primary" class="ion-text-center">
+      <ion-img
+        class="logo"
+        src="https://ik.imagekit.io/yumepj2/tanyanyaid_logo_xm-14.png?updatedAt=1624392428366"
+      ></ion-img>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="step === 1">
+  <ion-title class="ion-text-center">
+    <h1>Create Your Account</h1>
+  </ion-title>
+
+  <ion-item class="ion-margin">
+    <ion-label position="floating">Name</ion-label>
+    <ion-input [(ngModel)]="name"></ion-input>
+  </ion-item>
+
+  <ion-item class="ion-margin">
+    <ion-label position="floating">@Username</ion-label>
+    <ion-input [(ngModel)]="username"></ion-input>
+  </ion-item>
+
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button> </ion-tab-button>
+      <ion-tab-button> </ion-tab-button>
+      <ion-tab-button tab="tab1" layout="icon-end" (click)="nextStep()">
+        <ion-button shape="round" color="primary">Next</ion-button>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>
+
+<ion-content *ngIf="step === 2">
+  <ion-title class="ion-text-center">
+    <h1>Create Your Account</h1>
+  </ion-title>
+
+  <ion-item class="ion-margin">
+    <ion-label position="floating">Email</ion-label>
+    <ion-input type="email" [(ngModel)]="email"></ion-input>
+  </ion-item>
+
+  <ion-item class="ion-margin">
+    <ion-label position="floating">Password</ion-label>
+    <ion-input type="password" [(ngModel)]="password"></ion-input>
+  </ion-item>
+
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button>
+        <ion-button shape="round" color="secondary" (click)="previousStep()"
+          >Previous</ion-button
+        >
+      </ion-tab-button>
+      <ion-tab-button> </ion-tab-button>
+      <ion-tab-button tab="tab1" layout="icon-end">
+        <ion-button shape="round" color="primary" (click)="submit()"
+          >Register</ion-button
+        >
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>
