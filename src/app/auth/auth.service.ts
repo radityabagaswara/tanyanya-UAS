@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
 
 @Injectable({
@@ -10,7 +11,8 @@ export class AuthService {
   constructor(
     private storage: Storage,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private toastController: ToastController
   ) {}
 
   async getToken() {
@@ -50,6 +52,13 @@ export class AuthService {
   async logout() {
     await this.storage.remove('token');
     await this.storage.remove('user');
+
+    const toast = await this.toastController.create({
+      message: 'Logout success. Redirecting...',
+      duration: 2000,
+      color: 'success',
+    });
+    toast.present();
     this.router.navigateByUrl('/login');
   }
 }

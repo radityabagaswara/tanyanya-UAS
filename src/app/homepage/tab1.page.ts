@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
+import { Tab1Service } from './tab1.service';
 
 @Component({
   selector: 'app-tab1',
@@ -8,17 +9,31 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['tab1.page.scss'],
 })
 export class Tab1Page implements OnInit {
-  constructor(private authService: AuthService, private router: Router) {}
+  posts: [];
+
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private tab1Service: Tab1Service
+  ) {}
   async ngOnInit() {
     const token = await this.authService.getToken();
     if (!token) {
-      this.router.navigateByUrl('/login');
+      return this.router.navigateByUrl('/login');
     }
+    this.tab1Service.getAllPost().subscribe((res) => {
+      if (res.status === 'success') {
+        this.posts = res.data;
+      }
+    });
   }
 
   doRefresh(event) {
-    setTimeout(() => {
-      event.target.complete();
-    }, 2000);
+    this.tab1Service.getAllPost().subscribe((res) => {
+      if (res.status === 'success') {
+        this.posts = res.data;
+        event.target.complete();
+      }
+    });
   }
 }

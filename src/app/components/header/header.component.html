@@ -4,7 +4,10 @@
       <ion-row class="ion-align-items-center">
         <ion-col size="3">
           <ion-avatar>
-            <img src="https://ui-avatars.com/api/?size=128" />
+            <ion-avatar>
+              <img src="{{ avatar }}" />
+            </ion-avatar>
+            <!-- <img src="https://ui-avatars.com/api/?size=128" /> -->
           </ion-avatar>
         </ion-col>
         <ion-col size="9">
@@ -35,10 +38,7 @@
       <ion-row class="ion-align-items-center">
         <ion-col size="2">
           <ion-avatar>
-            <img
-              (click)="openMenu()"
-              src="https://ui-avatars.com/api/?size=128"
-            />
+            <img (click)="openMenu()" src="{{ avatar }}" />
           </ion-avatar>
         </ion-col>
         <ion-col size="8" class="ion-text-center">
