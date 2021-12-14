@@ -9,6 +9,7 @@ import { Tab1Service } from './tab1.service';
   styleUrls: ['tab1.page.scss'],
 })
 export class Tab1Page implements OnInit {
+  user: any;
   posts: [];
 
   constructor(
@@ -21,7 +22,10 @@ export class Tab1Page implements OnInit {
     if (!token) {
       return this.router.navigateByUrl('/login');
     }
-    this.tab1Service.getAllPost().subscribe((res) => {
+
+    this.user = await this.authService.getData();
+
+    this.tab1Service.getAllPost(this.user.id).subscribe((res) => {
       if (res.status === 'success') {
         this.posts = res.data;
       }
@@ -29,7 +33,7 @@ export class Tab1Page implements OnInit {
   }
 
   doRefresh(event) {
-    this.tab1Service.getAllPost().subscribe((res) => {
+    this.tab1Service.getAllPost(this.user.id).subscribe((res) => {
       if (res.status === 'success') {
         this.posts = res.data;
         event.target.complete();

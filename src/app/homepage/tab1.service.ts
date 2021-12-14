@@ -8,8 +8,9 @@ import { Observable } from 'rxjs';
 export class Tab1Service {
   constructor(private readonly http: HttpClient) {}
 
-  getAllPost(): Observable<any> {
-    const body = new HttpParams();
+  getAllPost(userId: number): Observable<any> {
+    let body = new HttpParams();
+    body = body.set('users_id', userId);
     return this.http.post('http://localhost/uas/api/posts/list.php', body);
   }
 }

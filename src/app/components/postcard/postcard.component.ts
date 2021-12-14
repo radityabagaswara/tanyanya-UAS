@@ -14,6 +14,9 @@ export class PostcardComponent implements OnInit {
   @Input()
   data: any;
 
+  @Input()
+  isFull? = null;
+
   date: string;
   timeto: string;
 
@@ -25,8 +28,7 @@ export class PostcardComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log(this.data);
-    const dateTemp = new Date(this.data.post.created_at);
+    const dateTemp = new Date(this.data.data.created_at);
     this.date = format(dateTemp, 'd, MMM yyyy hh:mm a');
     this.timeto = formatDistance(new Date(), dateTemp, {
       addSuffix: false,
@@ -47,14 +49,21 @@ export class PostcardComponent implements OnInit {
   }
 
   async likePost() {
-    console.log(this.data.post.post_id);
+    console.log(this.data.data.post_id);
     this.postService
       .likePost(
-        this.data.post.post_id,
+        this.data.data.post_id,
         JSON.parse(await this.storage.get('user')).id
       )
       .subscribe(async (res: { status: string; msg: string }) => {
         if (res.status === 'success') {
+          if (res.msg === 'Liked!') {
+            this.data.data.total_like += 1;
+            this.data.data.user_liked = 1;
+          } else {
+            this.data.data.total_like -= 1;
+            this.data.data.user_liked = 0;
+          }
           const toast = await this.toastController.create({
             message: res.msg,
             duration: 2000,

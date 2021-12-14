@@ -22,6 +22,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./login/login.module').then((m) => m.LoginPageModule),
   },
+  {
+    path: 'detailpost/:id',
+    loadChildren: () =>
+      import('./detailpost/detailpost.module').then(
+        (m) => m.DetailpostPageModule
+      ),
+  },
 ];
 @NgModule({
   imports: [

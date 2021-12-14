@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title mode="ios">Post</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <app-postcard *ngIf="loaded" [data]="{data}" [isFull]="true"></app-postcard>
+  <div>
+    <ion-item>
+      <ion-textarea
+        [(ngModel)]="comment"
+        placeholder="Write your comment..."
+        type="text"
+        autoGrow="true"
+      ></ion-textarea>
+    </ion-item>
+    <ion-button
+      (click)="addComment()"
+      fill="solid"
+      shape="round"
+      class="ion-margin"
+    >
+      Post
+    </ion-button>
+  </div>
+
+  <div *ngFor="let data of comments">
+    <app-comment [data]="data"></app-comment>
+  </div>
+</ion-content>

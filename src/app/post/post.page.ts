@@ -14,6 +14,7 @@ export class PostPage implements OnInit {
   user: any;
   url = '';
   image: any;
+  fileType: string;
 
   constructor(
     private postService: PostService,
@@ -34,10 +35,13 @@ export class PostPage implements OnInit {
     if (event.target.files) {
       this.url = URL.createObjectURL(event.target.files[0]);
       this.image = event.target.files[0];
+
+      this.fileType = this.image.name.split('.').pop().toLowerCase();
+
       const reader = new FileReader();
       reader.onloadend = () => {
         this.image = reader.result;
-        this.image = this.image.replace('data:image/jpeg;base64,', '');
+        this.image = this.image.split(',')[1];
       };
       reader.readAsDataURL(this.image);
     }
@@ -45,7 +49,7 @@ export class PostPage implements OnInit {
 
   private createPost() {
     this.postService
-      .createPost(this.post, this.user.id, this.image)
+      .createPost(this.post, this.user.id, this.image, this.fileType)
       .subscribe(async (res) => {
         if (res.status === 'success') {
           const toast = await this.toastController.create({

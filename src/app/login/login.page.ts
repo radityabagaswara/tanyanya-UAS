@@ -43,7 +43,7 @@ export class LoginPage implements OnInit {
           });
           toast.present();
           toast.onDidDismiss().then(() => {
-            this.router.navigateByUrl('/');
+            this.router.navigateByUrl('/', { skipLocationChange: true });
           });
         } else {
           const toast = await this.toastController.create({

@@ -1,59 +1,77 @@
 <ion-card>
-  <ion-card-content>
-    <ion-row class="ion-align-items-center">
-      <ion-col size="10">
-        <ion-row>
-          <ion-col size="2">
-            <ion-avatar>
-              <img
-                *ngIf="data.post.user_avatar"
-                src="{{ data.post.user_avatar }}"
-              />
-              <img
-                *ngIf="!data.post.user_avatar"
-                src="{{
-                  'https://ui-avatars.com/api/?name=' +
-                    data.post.name +
-                    '&rounded=true&background=FCE4EC'
-                }}"
-              />
-            </ion-avatar>
-          </ion-col>
-          <ion-col size="10">
-            <h2>{{ data.post.name }}</h2>
-            <small>{{ timeto }} • {{ date }}</small>
-          </ion-col>
-        </ion-row>
-      </ion-col>
-      <ion-col size="2" class="ion-text-right" (click)="openSetting($event)">
-        <ion-icon name="ellipsis-horizontal" color="primary"></ion-icon>
-      </ion-col>
-    </ion-row>
-    <p>{{ data.post.post }}</p>
-  </ion-card-content>
-  <ion-img
-    *ngIf="data.post.image_url"
-    src="{{ 'http://localhost/uas/' + data.post.image_url }}"
-  ></ion-img>
+  <a
+    [routerLink]="!isFull ? ['/detailpost/', data.data.post_id] : null"
+    routerDirection="forward"
+    style="color: inherit; text-decoration: inherit"
+  >
+    <ion-card-content>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="10">
+          <ion-row>
+            <ion-col size="2">
+              <ion-avatar>
+                <img
+                  *ngIf="data.data.user_avatar"
+                  src="{{ data.data.user_avatar }}"
+                />
+                <img
+                  *ngIf="!data.data.user_avatar"
+                  src="{{
+                    'https://ui-avatars.com/api/?name=' +
+                      data.data.name +
+                      '&rounded=true&background=FCE4EC'
+                  }}"
+                />
+              </ion-avatar>
+            </ion-col>
+            <ion-col size="10">
+              <h2>{{ data.data.name }}</h2>
+              <small>{{ timeto }} • {{ date }}</small>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col
+          *ngIf="isFull"
+          size="2"
+          class="ion-text-right"
+          (click)="openSetting($event)"
+        >
+          <ion-icon name="ellipsis-horizontal" color="primary"></ion-icon>
+        </ion-col>
+      </ion-row>
+      <p>{{ data.data.post }}</p>
+    </ion-card-content>
+    <ion-img
+      class="half"
+      *ngIf="data.data.image_url && !isFull"
+      src="{{ 'http://localhost/uas/' + data.data.image_url }}"
+    ></ion-img>
 
+    <ion-img
+      *ngIf="data.data.image_url && isFull"
+      src="{{ 'http://localhost/uas/' + data.data.image_url }}"
+    ></ion-img>
+  </a>
   <ion-row class="ion-justify-content-start ion-align-items-center">
     <ion-col size="sm">
       <ion-row class="ion-align-items-center">
         <ion-col>
           <ion-icon
+            *ngIf="data.data.user_liked === 0"
             name="heart-outline"
             size="small"
             (click)="likePost()"
           ></ion-icon>
-          <!-- <ion-icon
+          <ion-icon
+            *ngIf="data.data.user_liked === 1"
             name="heart"
             size="small"
             color="primary"
             (click)="likePost()"
-          ></ion-icon> -->
+          ></ion-icon>
         </ion-col>
         <ion-col>
-          <p>10</p>
+          <p>{{ data.data.total_like }}</p>
         </ion-col>
       </ion-row>
     </ion-col>
@@ -63,7 +81,7 @@
           <ion-icon name="chatbubble-outline" size="small"></ion-icon>
         </ion-col>
         <ion-col>
-          <p>150</p>
+          <p>{{ data.data.total_comment }}</p>
         </ion-col>
       </ion-row>
     </ion-col>
