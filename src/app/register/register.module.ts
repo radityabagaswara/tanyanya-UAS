@@ -8,7 +8,6 @@ import { RegisterPageRoutingModule } from './register-routing.module';
 
 import { RegisterPage } from './register.page';
 import { RegisterService } from './register.service';
-import { HttpDefault } from '../httpDefault';
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, RegisterPageRoutingModule],

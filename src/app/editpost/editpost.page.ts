@@ -39,7 +39,7 @@ export class EditpostPage implements OnInit {
       if (res.status === 'success') {
         this.post = res.data.post;
         if (res.data.image_url.length > 1) {
-          this.url = 'http://localhost/uas/' + res.data.image_url;
+          this.url = 'https://ubaya.fun/hybrid/160719057/' + res.data.image_url;
         }
       }
     });

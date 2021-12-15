@@ -21,6 +21,9 @@ export class RegisterService {
     body = body.set('password', password);
     console.log('creating User');
 
-    return this.http.post('http://localhost/uas/api/user/post.php', body);
+    return this.http.post(
+      'https://ubaya.fun/hybrid/160719057/api/user/post.php',
+      body
+    );
   }
 }

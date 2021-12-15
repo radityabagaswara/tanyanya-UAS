@@ -27,6 +27,7 @@ export class RegisterPage implements OnInit {
 
   async ngOnInit() {
     const token = await this.authService.getToken();
+    console.log(token);
     if (token) {
       this.router.navigateByUrl('/');
     }

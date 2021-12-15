@@ -12,6 +12,9 @@ export class LoginService {
     let body = new HttpParams();
     body = body.set('username', username);
     body = body.set('password', password);
-    return this.http.post('http://localhost/uas/api/user/login.php', body);
+    return this.http.post(
+      'https://ubaya.fun/hybrid/160719057/api/user/login.php',
+      body
+    );
   }
 }

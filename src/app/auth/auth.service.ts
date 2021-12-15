@@ -17,6 +17,10 @@ export class AuthService {
 
   async getToken() {
     const token = await this.storage.get('token');
+    console.log(token);
+    if (!token) {
+      return false;
+    }
 
     const data: any = await this.validateToken(token);
     if (!token) {
@@ -42,7 +46,10 @@ export class AuthService {
       let body = new HttpParams();
       body = body.set('token', token);
       this.http
-        .post('http://localhost/uas/api/user/checklogin.php', body)
+        .post(
+          'https://ubaya.fun/hybrid/160719057/api/user/checklogin.php',
+          body
+        )
         .subscribe((res: any) => {
           resolve(res);
         });

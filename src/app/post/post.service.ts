@@ -19,7 +19,10 @@ export class PostService {
     body = body.set('users_id', usersId);
     body = body.set('image', image);
     body = body.set('file_type', fileType);
-    return this.http.post('http://localhost/uas/api/posts/post.php', body);
+    return this.http.post(
+      'https://ubaya.fun/hybrid/160719057/api/posts/post.php',
+      body
+    );
   }
 
   editPost(
@@ -33,20 +36,29 @@ export class PostService {
     body = body.set('post', post);
     body = body.set('image', image);
     body = body.set('file_type', fileType);
-    return this.http.post('http://localhost/uas/api/posts/edit.php', body);
+    return this.http.post(
+      'https://ubaya.fun/hybrid/160719057/api/posts/edit.php',
+      body
+    );
   }
 
   likePost(post: string, usersId: string) {
     let body = new HttpParams();
     body = body.set('posts_id', post);
     body = body.set('users_id', usersId);
-    return this.http.post('http://localhost/uas/api/posts/like.php', body);
+    return this.http.post(
+      'https://ubaya.fun/hybrid/160719057/api/posts/like.php',
+      body
+    );
   }
 
   block(usersId: string, usersIdBlocked: string) {
     let body = new HttpParams();
     body = body.set('users_id', usersId);
     body = body.set('users_id_blocked', usersIdBlocked);
-    return this.http.post('http://localhost/uas/api/posts/block.php', body);
+    return this.http.post(
+      'https://ubaya.fun/hybrid/160719057/api/posts/block.php',
+      body
+    );
   }
 }

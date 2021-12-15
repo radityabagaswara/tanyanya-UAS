@@ -11,6 +11,9 @@ export class Tab1Service {
   getAllPost(userId: number): Observable<any> {
     let body = new HttpParams();
     body = body.set('users_id', userId);
-    return this.http.post('http://localhost/uas/api/posts/list.php', body);
+    return this.http.post(
+      'https://ubaya.fun/hybrid/160719057/api/posts/list.php',
+      body
+    );
   }
 }

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost/uas/',
+  apiUrl: 'https://ubaya.fun/hybrid/160719057/',
 };
 
 /*

@@ -11,6 +11,9 @@ export class UserService {
   searchUser(searchQuery: string): Observable<any> {
     let body = new HttpParams();
     body = body.set('search_query', searchQuery);
-    return this.http.post('http://localhost/uas/api/user/get.php', body);
+    return this.http.post(
+      'https://ubaya.fun/hybrid/160719057/api/user/get.php',
+      body
+    );
   }
 }

@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { HttpDefault } from './httpDefault';
 import { IonicStorageModule } from '@ionic/storage-angular';
 
 @NgModule({
@@ -22,14 +21,7 @@ import { IonicStorageModule } from '@ionic/storage-angular';
     HttpClientModule,
     IonicStorageModule.forRoot(),
   ],
-  providers: [
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    {
-      provide: 'HTTP_INTERCEPTORS',
-      useClass: HttpDefault,
-      multi: true,
-    },
-  ],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

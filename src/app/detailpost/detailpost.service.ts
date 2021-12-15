@@ -12,13 +12,19 @@ export class DetailpostService {
     let body = new HttpParams();
     body = body.set('users_id', userId);
     body = body.set('posts_id', postId);
-    return this.http.post('http://localhost/uas/api/posts/getid.php', body);
+    return this.http.post(
+      'https://ubaya.fun/hybrid/160719057/api/posts/getid.php',
+      body
+    );
   }
 
   getComment(postId: number): Observable<any> {
     let body = new HttpParams();
     body = body.set('posts_id', postId);
-    return this.http.post('http://localhost/uas/api/posts/comment.php', body);
+    return this.http.post(
+      'https://ubaya.fun/hybrid/160719057/api/posts/comment.php',
+      body
+    );
   }
 
   addComment(comment: string, userId: number, postId: number): Observable<any> {
@@ -28,7 +34,7 @@ export class DetailpostService {
     body = body.set('users_id', userId);
     body = body.set('posts_id', postId);
     return this.http.post(
-      'http://localhost/uas/api/posts/addcomment.php',
+      'https://ubaya.fun/hybrid/160719057/api/posts/addcomment.php',
       body
     );
   }
@@ -37,6 +43,9 @@ export class DetailpostService {
     let body = new HttpParams();
     body = body.set('users_id', userId);
     body = body.set('posts_id', postId);
-    return this.http.post('http://localhost/uas/api/posts/delete.php', body);
+    return this.http.post(
+      'https://ubaya.fun/hybrid/160719057/api/posts/delete.php',
+      body
+    );
   }
 }
