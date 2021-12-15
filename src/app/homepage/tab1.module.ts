@@ -9,6 +9,7 @@ import { Tab1PageRoutingModule } from './tab1-routing.module';
 import { ComponentModule } from '../components/components.module';
 import { HeaderModule } from '../components/header/header.module';
 import { PostcardComponent } from '../components/postcard/postcard.component';
+import { PostCardModule } from '../components/postcard.module';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { PostcardComponent } from '../components/postcard/postcard.component';
     Tab1PageRoutingModule,
     ComponentModule,
     HeaderModule,
+    PostCardModule,
   ],
-  declarations: [Tab1Page, PostcardComponent],
+  declarations: [Tab1Page],
 })
 export class Tab1PageModule {}

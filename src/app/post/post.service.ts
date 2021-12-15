@@ -22,7 +22,20 @@ export class PostService {
     return this.http.post('http://localhost/uas/api/posts/post.php', body);
   }
 
-  // $users_id, $posts_id
+  editPost(
+    id: any,
+    post: string,
+    image: any,
+    fileType: string
+  ): Observable<any> {
+    let body = new HttpParams();
+    body = body.set('id', id);
+    body = body.set('post', post);
+    body = body.set('image', image);
+    body = body.set('file_type', fileType);
+    return this.http.post('http://localhost/uas/api/posts/edit.php', body);
+  }
+
   likePost(post: string, usersId: string) {
     let body = new HttpParams();
     body = body.set('posts_id', post);
@@ -30,10 +43,10 @@ export class PostService {
     return this.http.post('http://localhost/uas/api/posts/like.php', body);
   }
 
-  // likePost(userId: string, postId: string): Observable<any> {
-  //   let body = new HttpParams();
-  //   body = body.set('users_id', userId);
-  //   body = body.set('posts_id', postId);
-  //   return this.http.post('http://localhost/uas/api/posts/like.php', body);
-  // }
+  block(usersId: string, usersIdBlocked: string) {
+    let body = new HttpParams();
+    body = body.set('users_id', usersId);
+    body = body.set('users_id_blocked', usersIdBlocked);
+    return this.http.post('http://localhost/uas/api/posts/block.php', body);
+  }
 }

@@ -29,6 +29,11 @@ const routes: Routes = [
         (m) => m.DetailpostPageModule
       ),
   },
+  {
+    path: 'editpost/:id',
+    loadChildren: () =>
+      import('./editpost/editpost.module').then((m) => m.EditpostPageModule),
+  },
 ];
 @NgModule({
   imports: [

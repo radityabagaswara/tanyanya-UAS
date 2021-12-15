@@ -9,6 +9,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 import { Tab3PageRoutingModule } from './tab3-routing.module';
 import { ComponentModule } from '../components/components.module';
 import { HeaderModule } from '../components/header/header.module';
+import { UserService } from '../user/user.service';
 
 @NgModule({
   imports: [
@@ -22,5 +23,6 @@ import { HeaderModule } from '../components/header/header.module';
     ComponentModule,
   ],
   declarations: [Tab3Page],
+  providers: [UserService],
 })
 export class Tab3PageModule {}

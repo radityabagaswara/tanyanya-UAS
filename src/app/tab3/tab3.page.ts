@@ -1,4 +1,7 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from '../user/user.service';
 
 @Component({
   selector: 'app-tab3',
@@ -6,12 +9,21 @@ import { Component } from '@angular/core';
   styleUrls: ['tab3.page.scss'],
 })
 export class Tab3Page {
-  constructor() {}
+  users: [];
+  constructor(private location: Location, private userService: UserService) {}
 
   onCancel(event: Event) {
-    console.log('test');
+    this.location.back();
   }
   onChange(event) {
-    console.log(event.target.value);
+    if (event.target.value.length < 1) {
+      this.users = [];
+      return;
+    }
+    this.userService.searchUser(event.target.value).subscribe((res) => {
+      if (res.status === 'success') {
+        this.users = res.data;
+      }
+    });
   }
 }

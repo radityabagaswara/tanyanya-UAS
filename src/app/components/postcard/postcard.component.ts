@@ -39,6 +39,7 @@ export class PostcardComponent implements OnInit {
   async openSetting(e) {
     const popover = await this.popoverController.create({
       component: PostsettingComponent,
+      componentProps: { data: this.data.data },
       event: e,
       cssClass: 'custom-popover',
       translucent: true,

@@ -1,10 +1,6 @@
 <ion-card>
-  <a
-    [routerLink]="!isFull ? ['/detailpost/', data.data.post_id] : null"
-    routerDirection="forward"
-    style="color: inherit; text-decoration: inherit"
-  >
-    <ion-card-content>
+  <ion-card-content class="ion-no-padding ion-no-margin">
+    <div class="ion-margin-horizontal">
       <ion-row class="ion-align-items-center">
         <ion-col size="10">
           <ion-row>
@@ -30,28 +26,32 @@
             </ion-col>
           </ion-row>
         </ion-col>
-        <ion-col
-          *ngIf="isFull"
-          size="2"
-          class="ion-text-right"
-          (click)="openSetting($event)"
-        >
+        <ion-col size="2" class="ion-text-right" (click)="openSetting($event)">
           <ion-icon name="ellipsis-horizontal" color="primary"></ion-icon>
         </ion-col>
       </ion-row>
-      <p>{{ data.data.post }}</p>
-    </ion-card-content>
-    <ion-img
-      class="half"
-      *ngIf="data.data.image_url && !isFull"
-      src="{{ 'http://localhost/uas/' + data.data.image_url }}"
-    ></ion-img>
+    </div>
 
-    <ion-img
-      *ngIf="data.data.image_url && isFull"
-      src="{{ 'http://localhost/uas/' + data.data.image_url }}"
-    ></ion-img>
-  </a>
+    <a
+      [routerLink]="!isFull ? ['/detailpost/', data.data.post_id] : null"
+      routerDirection="forward"
+      style="color: inherit; text-decoration: inherit"
+    >
+      <div class="ion-margin-horizontal">
+        <p>{{ data.data.post }}</p>
+      </div>
+      <ion-img
+        class="half"
+        *ngIf="data.data.image_url && !isFull"
+        src="{{ 'http://localhost/uas/' + data.data.image_url }}"
+      ></ion-img>
+    </a>
+  </ion-card-content>
+
+  <ion-img
+    *ngIf="data.data.image_url && isFull"
+    src="{{ 'http://localhost/uas/' + data.data.image_url }}"
+  ></ion-img>
   <ion-row class="ion-justify-content-start ion-align-items-center">
     <ion-col size="sm">
       <ion-row class="ion-align-items-center">

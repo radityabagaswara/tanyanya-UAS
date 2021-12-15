@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title mode="ios">Edit Post</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button
+        shape="round"
+        fill="solid"
+        color="primary"
+        (click)="editPost()"
+        ><p style="padding: 0 10px">Edit</p></ion-button
+      >
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-avatar slot="start" class="avatar">
+      <img src="https://ui-avatars.com/api/?size=128" />
+    </ion-avatar>
+    <ion-textarea
+      [(ngModel)]="post"
+      placeholder="Update Your Post!"
+      type="text"
+      autoGrow="true"
+    ></ion-textarea>
+  </ion-item>
+  <ion-item class="ion-margin">
+    <ion-img *ngIf="url.length > 1" [src]="url"></ion-img>
+  </ion-item>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button (click)="imageSelector(imgSelector)">
+        <ion-button size="default" fill="clear">
+          <ion-icon name="camera" style="color: white"></ion-icon>
+        </ion-button>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+
+  <input
+    type="file"
+    #imgSelector
+    id="imgSelector"
+    name="image"
+    hidden
+    (change)="selectPicture($event)"
+  />
+</ion-content>

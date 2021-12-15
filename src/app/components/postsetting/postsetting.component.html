@@ -1,32 +1,68 @@
-<ion-row class="ion-justify-content-start">
-  <ion-col size="12">
-    <ion-button (click)="onClick()" fill="clear" color="medium">
-      <span>
-        <ion-icon slot="start" name="person"></ion-icon>
-        Follow
-      </span>
-    </ion-button>
-  </ion-col>
-</ion-row>
+<ion-content>
+  <ion-row class="ion-justify-content-start" *ngIf="data.is_owner === 0">
+    <ion-col size="12">
+      <ion-button (click)="onClick()" fill="clear" color="medium">
+        <span>
+          <ion-icon slot="start" name="person"></ion-icon>
+          Follow
+        </span>
+      </ion-button>
+    </ion-col>
+  </ion-row>
 
-<ion-row class="ion-justify-content-start">
-  <ion-col size="12">
-    <ion-button (click)="onClick()" fill="clear" color="medium">
-      <span>
-        <ion-icon slot="start" name="flag"></ion-icon>
-        Report
-      </span>
-    </ion-button>
-  </ion-col>
-</ion-row>
+  <ion-row class="ion-justify-content-start" *ngIf="data.is_owner === 0">
+    <ion-col size="12">
+      <ion-button (click)="onClick()" fill="clear" color="medium">
+        <span>
+          <ion-icon slot="start" name="flag"></ion-icon>
+          Report
+        </span>
+      </ion-button>
+    </ion-col>
+  </ion-row>
 
-<ion-row style="margin-top: 8px" class="ion-justify-content-start">
-  <ion-col size="12">
-    <ion-button (click)="onClick()" fill="clear" color="danger">
-      <span>
-        <ion-icon slot="start" name="close"></ion-icon>
-        Block
-      </span>
-    </ion-button>
-  </ion-col>
-</ion-row>
+  <ion-row
+    style="margin-top: 8px"
+    class="ion-justify-content-start"
+    *ngIf="data.is_owner === 0"
+  >
+    <ion-col size="12">
+      <ion-button (click)="block()" fill="clear" color="danger">
+        <span>
+          <ion-icon slot="start" name="close"></ion-icon>
+          Block
+        </span>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="ion-justify-content-start" *ngIf="data.is_owner === 1">
+    <ion-col size="12">
+      <ion-button
+        routerLink="/editpost/{{ data.post_id }}"
+        fill="clear"
+        color="medium"
+      >
+        <span>
+          <ion-icon slot="start" name="create-outline"></ion-icon>
+          Edit
+        </span>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row
+    style="margin-top: 8px"
+    class="ion-justify-content-start"
+    *ngIf="data.is_owner === 1"
+  >
+    <ion-col size="12">
+      <ion-button (click)="delete()" fill="clear" color="danger">
+        <span>
+          <ion-icon slot="start" name="trash-outline"></ion-icon>
+          Delete
+        </span>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>

@@ -28,6 +28,11 @@ export class DetailpostPage implements OnInit {
   ) {}
 
   async ngOnInit() {
+    const token = await this.authService.getToken();
+    if (!token) {
+      return this.router.navigateByUrl('/login');
+    }
+
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     this.user = await this.authService.getData();
 

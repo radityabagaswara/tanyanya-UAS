@@ -1,37 +1,48 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
-import { Storage } from '@ionic/storage-angular';
-import { PostService } from './post.service';
+import { AnonymousSubject } from 'rxjs/internal/Subject';
 import { AuthService } from '../auth/auth.service';
+import { DetailpostService } from '../detailpost/detailpost.service';
+import { PostService } from '../post/post.service';
 
 @Component({
-  selector: 'app-post',
-  templateUrl: './post.page.html',
-  styleUrls: ['./post.page.scss'],
+  selector: 'app-editpost',
+  templateUrl: './editpost.page.html',
+  styleUrls: ['./editpost.page.scss'],
 })
-export class PostPage implements OnInit {
+export class EditpostPage implements OnInit {
   post: string;
   user: any;
   url = '';
   image = null;
   fileType = null;
+  id: any;
 
   constructor(
+    private activatedRoute: ActivatedRoute,
+    private toastController: ToastController,
     private authService: AuthService,
     private postService: PostService,
-    private storage: Storage,
-    private toastController: ToastController,
+    private detailpostService: DetailpostService,
     private router: Router
   ) {}
 
   async ngOnInit() {
-    this.user = JSON.parse(await this.storage.get('user'));
-
     const token = await this.authService.getToken();
     if (!token) {
       return this.router.navigateByUrl('/login');
     }
+    this.id = this.activatedRoute.snapshot.paramMap.get('id');
+    this.user = await this.authService.getData();
+    this.detailpostService.getPost(this.user.id, this.id).subscribe((res) => {
+      if (res.status === 'success') {
+        this.post = res.data.post;
+        if (res.data.image_url.length > 1) {
+          this.url = 'http://localhost/uas/' + res.data.image_url;
+        }
+      }
+    });
   }
 
   imageSelector(input) {
@@ -54,9 +65,9 @@ export class PostPage implements OnInit {
     }
   }
 
-  private createPost() {
+  private editPost() {
     this.postService
-      .createPost(this.post, this.user.id, this.image, this.fileType)
+      .editPost(this.id, this.post, this.image, this.fileType)
       .subscribe(async (res) => {
         if (res.status === 'success') {
           const toast = await this.toastController.create({

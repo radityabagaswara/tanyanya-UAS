@@ -20,8 +20,9 @@ import { CommentComponent } from '../components/comment/comment.component';
     IonicModule,
     DetailpostPageRoutingModule,
     HeaderModule,
+    PostCardModule,
   ],
-  declarations: [DetailpostPage, PostcardComponent, CommentComponent],
+  declarations: [DetailpostPage, CommentComponent],
   providers: [DetailpostService],
 })
 export class DetailpostPageModule {}

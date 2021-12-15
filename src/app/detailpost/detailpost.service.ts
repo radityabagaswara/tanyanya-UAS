@@ -32,4 +32,11 @@ export class DetailpostService {
       body
     );
   }
+
+  deletePost(userId: number, postId: number): Observable<any> {
+    let body = new HttpParams();
+    body = body.set('users_id', userId);
+    body = body.set('posts_id', postId);
+    return this.http.post('http://localhost/uas/api/posts/delete.php', body);
+  }
 }
