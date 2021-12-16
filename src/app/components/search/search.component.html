@@ -1,0 +1,28 @@
+<ion-content>
+  <div class="header">
+    <ion-searchbar
+      showCancelButton="always"
+      (ionCancel)="onCancel($event)"
+      (ionChange)="onChange($event)"
+    ></ion-searchbar>
+  </div>
+  <ion-list> Search List </ion-list>
+  <ion-item *ngFor="let user of users">
+    <ion-avatar slot="start">
+      <img *ngIf="user.photo_url" src="{{ user.photo_url }}" />
+      <img
+        *ngIf="!user.photo_url"
+        src="{{
+          'https://ui-avatars.com/api/?name=' +
+            user.name +
+            '&rounded=true&background=FCE4EC'
+        }}"
+      />
+    </ion-avatar>
+    <ion-label>
+      <h2>{{ user.name }}</h2>
+      <h3>@{{ user.username }}</h3>
+      <p>{{ user.post_count }} Post/s</p>
+    </ion-label>
+  </ion-item>
+</ion-content>

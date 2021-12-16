@@ -2,8 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { AuthService } from 'src/app/auth/auth.service';
-import { DetailpostService } from 'src/app/detailpost/detailpost.service';
-import { PostService } from 'src/app/post/post.service';
+import { DetailpostService } from 'src/app/detailpost.service';
+import { PostService } from 'src/app/post.service';
 
 @Component({
   selector: 'app-postsetting',

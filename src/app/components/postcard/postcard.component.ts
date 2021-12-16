@@ -2,7 +2,7 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 import { PopoverController, ToastController } from '@ionic/angular';
 import { PostsettingComponent } from '../postsetting/postsetting.component';
 import { format, formatDistance } from 'date-fns';
-import { PostService } from 'src/app/post/post.service';
+import { PostService } from 'src/app/post.service';
 import { Storage } from '@ionic/storage-angular';
 
 @Component({
